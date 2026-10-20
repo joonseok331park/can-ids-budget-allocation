@@ -1,0 +1,23 @@
+file set_02/train_01/interval-1.csv: frames 634191, reversals 3424, windows 620
+windows whose features change after sorting: 533 (85.968%)
+  of those, attack-positive windows: 533 / positive windows total 607
+  changed among negative windows: 0 / 13
+            feature  max_abs_diff  mean_abs_diff_changed
+      rate_logratio        0.0000                 0.0000
+           oov_frac        0.0000                 0.0000
+       missing_frac        0.0000                 0.0000
+              id_js        0.0000                 0.0000
+        id_rate_dev        0.0000                 0.0000
+         iat_z_mean        0.0007                 0.0000
+          iat_z_gt3        0.0000                 0.0000
+     iat_short_frac        0.0000                 0.0000
+    range_viol_frac        0.0000                 0.0000
+    byte_change_dev        0.0001                 0.0000
+         ham_z_mean        0.0014                 0.0000
+  dlc_mismatch_frac        0.0000                 0.0000
+new_transition_frac        0.0069                 0.0016
+  id_max_range_viol        0.0000                 0.0000
+       id_max_iat_z        0.0138                 0.0001
+       id_max_short        0.0000                 0.0000
+  id_max_change_dev        0.0000                 0.0000
+       id_max_ham_z        0.0292                 0.0002

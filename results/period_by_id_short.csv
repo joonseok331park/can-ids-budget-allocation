@@ -1,0 +1,13 @@
+vehicle,cls,median_ratio,mean_iat_ratio,iqr_ratio,ref_iqr_us,cap_iqr_us,cap_iqr_over_period
+forester,accessory,1.0,1.0,0.939,92.506,72.241,0.004
+forester,attack,1.006,1.0,10.152,92.03,960.112,0.049
+forester,attack-free,1.0,1.0,1.111,92.03,103.951,0.005
+impala,accessory,1.0,1.0,1.005,372.052,350.893,0.022
+impala,attack,1.004,1.0,2.249,372.052,994.712,0.058
+impala,attack-free,1.0,1.0,0.995,372.052,365.019,0.023
+silverado,accessory,1.0,0.999,0.98,816.107,619.531,0.037
+silverado,attack,0.996,0.999,1.286,816.107,1060.367,0.064
+silverado,attack-free,0.999,0.999,0.919,816.107,742.912,0.04
+traverse,accessory,1.0,1.0,0.995,241.041,251.442,0.019
+traverse,attack,1.004,1.0,3.965,241.041,1031.995,0.063
+traverse,attack-free,1.0,1.0,1.025,241.041,247.002,0.019
