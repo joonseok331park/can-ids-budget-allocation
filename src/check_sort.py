@@ -24,4 +24,4 @@ out = [f"file set_02/train_01/interval-1.csv: frames {raw['t'].size}, reversals 
        f"  changed among negative windows: {int((changed & (lab==0)).sum())} / {int((lab==0).sum())}"]
 per = pd.DataFrame({"feature": FEATURES, "max_abs_diff": D.max(0), "mean_abs_diff_changed": D[changed].mean(0) if changed.any() else 0})
 out.append(per.round(4).to_string(index=False))
-open(os.path.join(ROOT, "results/sort_check.txt"), "w").write("\n".join(out)); print("\n".join(out))
+open(os.path.join(ROOT, "results/sort_check.txt"), "w", encoding="utf-8").write("\n".join(out)); print("\n".join(out))

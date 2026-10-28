@@ -33,7 +33,7 @@ def headline():
              "excess5 = share with a new alarm within 5 s minus the same share for virtual start points in the "
              "normal prefixes of the attack captures.", "",
              pd.DataFrame(rows).to_markdown(index=False)]
-    open(os.path.join(ROOT, "results/v3_headline.md"), "w").write("\n".join(lines) + "\n")
+    open(os.path.join(ROOT, "results/v3_headline.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
 
 
 def road():
@@ -61,7 +61,7 @@ def road():
              "## AP by attack type (mean of the two positions)", "", by_attack.to_markdown(), "",
              "## Positive-window share per held-out normal capture (mean of the two positions)", "",
              by_capture.to_markdown()]
-    open(os.path.join(ROOT, "results/road_summary.md"), "w").write("\n".join(lines) + "\n")
+    open(os.path.join(ROOT, "results/road_summary.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
 
 
 def describe_bank(s):

@@ -58,7 +58,7 @@ def main(main_csv, contrast_csv=None, out_md=f"{ROOT}/results/v2_summary.md"):
             AP=("AP", "mean"), AP_sd=("AP", "std"), held_pos=("held_pos_frac", "mean"),
             prefix_pos=("prefix_pos_frac", "mean"), detect=("capture_detect_rate", "mean")).reset_index().round(3)
         lines += ["## 4. Small contrasts", "", cg.to_markdown(index=False), ""]
-    open(out_md, "w").write("\n".join(lines))
+    open(out_md, "w", encoding="utf-8").write("\n".join(lines))
     print("\n".join(lines))
 
 

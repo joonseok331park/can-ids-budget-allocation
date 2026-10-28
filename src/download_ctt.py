@@ -31,7 +31,7 @@ def get(r):
 if __name__ == "__main__":
     rows = list(csv.DictReader(open(os.path.join(ROOT, "results/ctt_repo_listing.csv"))))
     out = os.path.join(ROOT, "results/ctt_download_sha256.csv")
-    with cf.ThreadPoolExecutor(4) as ex, open(out, "w", newline="") as f:
+    with cf.ThreadPoolExecutor(4) as ex, open(out, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["path", "size_bytes", "ok", "sha256"])
         for res in ex.map(get, rows):

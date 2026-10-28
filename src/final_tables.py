@@ -130,5 +130,5 @@ if __name__ == "__main__":
     for B in (120.0, 30.0, 300.0):
         lines += cell_tables(d, B)
     lines += effect_scale(d) + controls() + denominators(d) + gains_losses()
-    open(os.path.join(ROOT, "results/final_tables.md"), "w").write("\n".join(lines))
+    open(os.path.join(ROOT, "results/final_tables.md"), "w", encoding="utf-8").write("\n".join(lines))
     print("written", len(lines))

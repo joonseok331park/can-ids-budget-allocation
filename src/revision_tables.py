@@ -385,7 +385,7 @@ def main():
     rr = rd("road_rev.csv")
     if rr is not None:
         parts += t_road(rr)
-    open(os.path.join(ROOT, "results/rev_tables.md"), "w").write("\n".join(parts) + "\n")
+    open(os.path.join(ROOT, "results/rev_tables.md"), "w", encoding="utf-8").write("\n".join(parts) + "\n")
     print("saved results/rev_tables.md")
 
 

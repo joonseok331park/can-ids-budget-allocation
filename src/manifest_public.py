@@ -60,5 +60,5 @@ prov = {"manifest_ctt_sha256": sha_file(os.path.join(ROOT, "results/manifest_ctt
         "vehicle_mapping": "ID-set fingerprint; README mapping kept as readme_vehicle",
         "feature_caches": {os.path.relpath(p, ROOT): sha_file(p) for p in sorted(glob.glob(os.path.join(ROOT, "data/features_alloc/*/*.npz")) + glob.glob(os.path.join(ROOT, "data/features_road/*.npz")) + glob.glob(os.path.join(ROOT, "data/features_v2/source/*.npz")))},
         "results": {os.path.relpath(p, ROOT): sha_file(p) for p in sorted(glob.glob(os.path.join(ROOT, "results/runs/v3_*.csv")) + [os.path.join(ROOT, "results/runs/road_v3.csv")])}}
-json.dump(prov, open(os.path.join(ROOT, "results/provenance.json"), "w"), indent=1)
+json.dump(prov, open(os.path.join(ROOT, "results/provenance.json"), "w", encoding="utf-8"), indent=1)
 print("provenance entries", len(prov["feature_caches"]), len(prov["results"]))

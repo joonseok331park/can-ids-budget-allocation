@@ -47,5 +47,5 @@ out = ["# Data and segments", "",
        seg.to_markdown(index=False), "", t.to_markdown(index=False), "",
        "Impala: standstill-1 is excluded from all evaluation and standstill-2 from the prefix normal evaluation.",
        "Traverse: force-neutral-2 of set_04/test_04 has no attack label and is excluded."]
-open(os.path.join(ROOT, "results/table_data_segments.md"), "w").write("\n".join(out))
+open(os.path.join(ROOT, "results/table_data_segments.md"), "w", encoding="utf-8").write("\n".join(out))
 print("\n".join(out))

@@ -57,7 +57,7 @@ def target_job(args):
                          "first_attack": float(c["t"][idx[0]]), "last_attack": float(c["t"][idx[-1]]),
                          "n_attack_frames": int(idx.size)})
     meta["attack_info"] = att_info
-    json.dump(meta, open(os.path.join(OUT, v, "meta.json"), "w"), indent=1)
+    json.dump(meta, open(os.path.join(OUT, v, "meta.json"), "w", encoding="utf-8"), indent=1)
     for B in budgets:
         F = (t0 + ANCHOR, t0 + ANCHOR + 0.3 * B)
         Cx = (F[1], F[1] + C_MAX)

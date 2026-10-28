@@ -75,7 +75,7 @@ def target_job(args):
                 np.savez_compressed(out, **d)
             print(f"[{time.strftime('%H:%M:%S')}] {tv} B={B} o={o} features saved", flush=True)
     json.dump({"attacks": r["attacks"], "kinds": r["attack_kinds"], "budget": r["budget"], "reference": r["reference"]},
-              open(os.path.join(FEAT, tv, "files.json"), "w"), indent=1)
+              open(os.path.join(FEAT, tv, "files.json"), "w", encoding="utf-8"), indent=1)
     return tv
 
 
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     roles = load_roles(os.path.join(ROOT, "results/manifest_ctt.csv"))
     targets = cfg["targets"] or sorted(roles)
     os.makedirs(FEAT, exist_ok=True)
-    json.dump(cfg, open(os.path.join(FEAT, "stage1_config.json"), "w"), indent=1)
+    json.dump(cfg, open(os.path.join(FEAT, "stage1_config.json"), "w", encoding="utf-8"), indent=1)
     with ProcessPoolExecutor(a.workers) as ex:
         for v in ex.map(source_job, [(v, cfg) for v in sorted(roles)]):
             print("source done", v, flush=True)

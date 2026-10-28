@@ -87,7 +87,7 @@ def stage_features():
         d.update(Xacc=np.vstack(Xacc), acc_file=np.concatenate(acc_id))
         np.savez_compressed(out, **d)
         json.dump({"held": held, "attack_info": info, "accelerator": accel, "budget": BUDGET},
-                  open(os.path.join(OUT, "meta.json"), "w"), indent=1)
+                  open(os.path.join(OUT, "meta.json"), "w", encoding="utf-8"), indent=1)
         print("saved", out, flush=True)
     return bud
 

@@ -72,7 +72,7 @@ def main(csv=ROOT + "/results/runs/v3_main.csv", out=ROOT + "/results/v3_summary
     lines += ["## Sign counts (4 vehicles × 2 positions = 8 cells, seed-mean differences)", "",
               "Lower is better for held pos and on@start. Differences within ±0.01 count as about equal.", "",
               pd.DataFrame(srows).to_markdown(index=False), ""]
-    open(out, "w").write("\n".join(lines))
+    open(out, "w", encoding="utf-8").write("\n".join(lines))
     print("\n".join(lines[:60]))
 
 

@@ -48,6 +48,6 @@ for path, role in CASES:
                      "matched_share": round(float(hit.mean()), 4), "longest_matched_run_s": round(best, 1),
                      "prefix_s": round(float(c["t"][n - 1] - c["t"][0]), 1)})
 t = pd.DataFrame(rows)
-open(os.path.join(ROOT, "results/reuse_cases.md"), "w").write(
+open(os.path.join(ROOT, "results/reuse_cases.md"), "w", encoding="utf-8").write(
     "# Per-ID matches for the two confirmed reuse cases (Impala)\n\n" + t.to_markdown(index=False) + "\n")
 print(t.to_string(index=False))

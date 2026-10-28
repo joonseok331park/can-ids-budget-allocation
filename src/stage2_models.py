@@ -136,5 +136,5 @@ if __name__ == "__main__":
     cfg = dict(DEFAULT2)
     if a.config:
         cfg.update(json.load(open(a.config)))
-    json.dump(cfg, open(a.out.replace(".csv", "_config.json"), "w"), indent=1)
+    json.dump(cfg, open(a.out.replace(".csv", "_config.json"), "w", encoding="utf-8"), indent=1)
     run(cfg, a.out)

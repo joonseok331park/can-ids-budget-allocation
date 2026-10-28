@@ -92,5 +92,5 @@ for v in ("forester", "impala", "silverado", "traverse"):
     print(v, "done", flush=True)
 summary = pd.DataFrame(rows)
 lines = lines[:4] + [summary.to_markdown(index=False), ""] + lines[4:]
-open(ROOT + "/results/diag_threshold.md", "w").write("\n".join(lines))
+open(ROOT + "/results/diag_threshold.md", "w", encoding="utf-8").write("\n".join(lines))
 print(summary.to_string(index=False))
