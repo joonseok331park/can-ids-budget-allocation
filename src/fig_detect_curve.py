@@ -1,6 +1,7 @@
-"""Detection curve against the normal reference: share of attack captures with a new alarm within t s of the first
-attack frame, next to the share of virtual start points in attack-capture normal prefixes followed by a new alarm
-within t s. One panel per condition; median over the 8 vehicle x position cells, vertical bars give the range.
+"""Detection curve against two normal references: share of attack captures with a new alarm within t s of the first
+attack frame, next to the share of virtual start points followed by a new alarm within t s, in the held-out normal
+capture and in the attack captures' normal prefixes. One panel per condition; median over the 8 vehicle x position
+cells, vertical bars give the range.
 Usage: python3 src/fig_detect_curve.py results/runs/v3_main.csv 120 results/figures/fig_detect_curve_B120.png (or .pdf)
 """
 import sys
@@ -13,9 +14,10 @@ from figstyle import WIDTH, setup, tt
 
 T = [1, 2, 5, 10, 30, 60]
 ORDER = ["T_main", "S_sameC", "S_allC", "T_split", "U_allC"]
-SERIES = [  # column prefix, colour, line dashes, marker face, x offset factor, legend label
-    ("new_within_", "black", (), "black", 0.92, r"attack captures, $R_{\mathrm{att},t}$"),
-    ("prefix_virtual_new_", "0.45", (3.2, 1.6), "white", 1.085, r"normal reference, $R_{\mathrm{nor},t}$"),
+SERIES = [  # column prefix, colour, line dashes, marker, marker face, x offset factor, legend label
+    ("new_within_", "black", (), "o", "black", 0.9, r"attack captures, $R_{\mathrm{att},t}$"),
+    ("held_virtual_new_", "0.35", (3.2, 1.6), "s", "white", 1.0, r"held-out reference"),
+    ("prefix_virtual_new_", "0.6", (1.0, 1.4), "^", "white", 1.11, r"attack-prefix reference"),
 ]
 
 
@@ -31,11 +33,11 @@ def main(csv, B, out):
     x = np.array(T, float)
     for ax, cond in zip(axes, ORDER):
         g = cells[cells.cond == cond]
-        for pref, col, dash, face, off, lab in SERIES:
+        for pref, col, dash, mk, face, off, lab in SERIES:
             v = g[[f"{pref}{t}s" for t in T]].to_numpy()
             ax.vlines(x * off, np.nanmin(v, 0), np.nanmax(v, 0), color=col, lw=0.45, alpha=0.55, zorder=1)
-            ax.plot(x * off, np.nanmedian(v, 0), color=col, dashes=dash, marker="s" if face == "white" else "o",
-                    ms=3.0 if face == "white" else 3.2, mfc=face, mec=col, mew=0.7, zorder=3, label=lab)
+            ax.plot(x * off, np.nanmedian(v, 0), color=col, dashes=dash, marker=mk, ms=3.0, mfc=face, mec=col,
+                    mew=0.7, zorder=3, label=lab)
         ax.set_xscale("log")
         ax.set_xlim(0.72, 85)
         ax.xaxis.set_major_locator(FixedLocator(T))
@@ -49,7 +51,7 @@ def main(csv, B, out):
     axes[0].set_ylabel("share with a new alarm")
     fig.supxlabel("$t$ (s)", fontsize=8)
     h, lab = axes[0].get_legend_handles_labels()
-    fig.legend(h, lab, loc="outside upper center", ncol=2)
+    fig.legend(h, lab, loc="outside upper center", ncol=3)
     fig.savefig(out)
     print("saved", out)
 

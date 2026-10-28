@@ -8,7 +8,7 @@ For target vehicle v (its longer attack-free capture = budget capture, origin t0
 Evaluation (identical for every condition):
   held-out normal: the other attack-free capture, whole
   attack captures: all windows (AP), per-capture detection, clean prefix windows (end <= first attack frame)
-Source vehicle s: P = [t0_s, t0_s + L) with L = 250 (main) or matched lengths; source windows from
+Source vehicle s: P = [t0_s + 250 - L, t0_s + 250) with L = 250 (main) or matched lengths; source windows from
   [t0_s + 250, t0_s + 250 + 180), i.e. never from the source's own profile segment.
 Outputs: data/features_v2/<vehicle>/B<B>_<short|ref>.npz, data/features_v2/source/<vehicle>_P<L>.npz
 """

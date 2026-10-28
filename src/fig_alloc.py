@@ -1,6 +1,6 @@
 """Dot plot of the allocation study: rows = conditions, columns = metrics, one row of panels per vehicle.
 
-Each symbol is the seed mean at one budget position (filled: u = 250 - B/2, open: u = 0); a thin line joins the two
+E5 uses the held-out normal reference. Each symbol is the seed mean at one budget position (filled: u = 250 - B/2, open: u = 0); a thin line joins the two
 positions. Usage: python3 src/fig_alloc.py results/runs/v3_main.csv 120 results/figures/fig_alloc_B120.png (or .pdf)
 """
 import sys
@@ -13,7 +13,7 @@ from figstyle import WIDTH, setup, tt
 
 ORDER = ["T_main", "S_sameC", "S_allC", "T_split", "U_allC"]
 METRICS = [("AP", "AP", (0, 1)), ("held_pos_frac", "held-out alarm share", (0, 1)),
-           ("excess5", "$E_5$", (-0.6, 1))]
+           ("excess5", "$E_5$ (held-out reference)", (-1, 1))]
 
 
 def main(csv, B, out):
@@ -22,8 +22,9 @@ def main(csv, B, out):
     d = pd.read_csv(csv)
     d = d[d.B == B]
     d["pos"] = np.where(d.u == 0, "start", "old")
-    # E5: share of attack captures with a new alarm within 5 s minus the same share for virtual starts in normal prefixes
-    d["excess5"] = d["new_within_5s"] - d["prefix_virtual_new_5s"]
+    # E5: share of attack captures with a new alarm within 5 s minus the same share for virtual starts in the held-out
+    # normal capture
+    d["excess5"] = d["new_within_5s"] - d["held_virtual_new_5s"]
     g = d.groupby(["target", "pos", "cond"])[[m for m, _, _ in METRICS]].mean().reset_index()
     vehicles = sorted(g.target.unique())
 

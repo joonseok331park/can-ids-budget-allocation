@@ -1,0 +1,21 @@
+vehicle,segment (s),frames/s,IDs seen,IDs of the capture not seen
+forester,"[0, 60)",1614,54,0
+forester,"[60, 120)",1614,50,4
+forester,"[190, 250)",1613,50,4
+forester,"[250, 310)",1614,50,4
+forester,"[310, 572]",1604,54,0
+impala,"[0, 60)",1447,51,0
+impala,"[60, 120)",1447,51,0
+impala,"[190, 250)",1447,51,0
+impala,"[250, 310)",1446,51,0
+impala,"[310, 1350]",1446,51,0
+silverado,"[0, 60)",2573,98,0
+silverado,"[60, 120)",2571,98,0
+silverado,"[190, 250)",2571,98,0
+silverado,"[250, 310)",2571,98,0
+silverado,"[310, 667]",2564,98,0
+traverse,"[0, 60)",2000,62,0
+traverse,"[60, 120)",2000,62,0
+traverse,"[190, 250)",2001,62,0
+traverse,"[250, 310)",2000,62,0
+traverse,"[310, 445]",2001,62,0
